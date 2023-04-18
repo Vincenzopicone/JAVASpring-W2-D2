@@ -32,9 +32,9 @@ public class PrenotazioneController {
 	public @ResponseBody String showRulesLanguages (@PathVariable String lang) {
 		String frase = null;
 		System.out.println(lang);
-		if(lang == "en") {
+		if("en".equals(lang)) {
            return frase = "The user cannot book two different seats on the same day." + "The station cannot be booked by two or more different users on the same day.";
-		} else if (lang == "it") {
+		} else if ("it".equals(lang)) {
            return frase = "L'utente non può prenotare due postazioni diverse lo stesso giorno."+ "La postazione non può essere prenotata da due o più utenti diversi nello stesso giorno.";
 		} else {
 		   return frase = "Lingua non supportata";
@@ -44,10 +44,7 @@ public class PrenotazioneController {
 	
 	@GetMapping(value="/utenti", produces= MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity <?> utenti () {
-		
 		List <Utente> lista = service.findAllUtente();
-		
-		
 		return new ResponseEntity <> (lista, HttpStatus.CREATED); 
 	}
 
