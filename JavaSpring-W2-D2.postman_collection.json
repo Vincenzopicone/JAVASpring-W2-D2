@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "14413cca-0649-49f0-9708-3ac7206f4626",
+		"name": "JavaSpring-W2-D2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25926925"
+	},
+	"item": [
+		{
+			"name": "GetRegole",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/regole/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"regole",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Richiesta sbagliata",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/regole/gygyg",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"regole",
+						"gygyg"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get lingua corretta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/regole/it",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"regole",
+						"it"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

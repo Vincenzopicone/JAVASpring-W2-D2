@@ -89,11 +89,16 @@ public class GestionePrenotazioniRun implements CommandLineRunner {
 
 		/// prova del controllo su le prenotazioni OK
 		/// stesso utente non può prenotare lo stesso giorno
-		Pren_Serv.creaPrenotazione(U1, P5, LocalDate.of(2023, 6, 3));
+		Pren_Serv.creaPrenotazione(U3, P1, LocalDate.of(2023, 9, 3));
 		
 		/// non si può prenotare lo stesso giorno un postazione
 		
-		Pren_Serv.creaPrenotazione(U2, P5, LocalDate.of(2023, 6, 3));
+		//Pren_Serv.creaPrenotazione(U5, P6, LocalDate.of(2023, 3, 3));
+		
+		
+		List <Prenotazione> lista = Pren_Serv.findAllPrenotazione();
+		System.out.println(lista.size());
+		
 		
 		
 		
