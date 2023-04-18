@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Prenotazione;
+import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 import it.vincenzopicone.gestioneprenotazioni.service.PrenotazioneService;
+import it.vincenzopicone.gestioneprenotazioni.service.UtenteService;
 
 
 
 @Controller
 public class PrenotazioneController {
 	
-	@Autowired PrenotazioneService service;
+	@Autowired UtenteService service;
 	
 	@GetMapping("/regole")
 	public @ResponseBody String showRules () {
@@ -31,23 +33,22 @@ public class PrenotazioneController {
 		String frase = null;
 		System.out.println(lang);
 		if(lang == "en") {
-           frase = "The user cannot book two different seats on the same day." + "The station cannot be booked by two or more different users on the same day.";
+           return frase = "The user cannot book two different seats on the same day." + "The station cannot be booked by two or more different users on the same day.";
 		} else if (lang == "it") {
-            frase = "L'utente non può prenotare due postazioni diverse lo stesso giorno."+ "La postazione non può essere prenotata da due o più utenti diversi nello stesso giorno.";
+           return frase = "L'utente non può prenotare due postazioni diverse lo stesso giorno."+ "La postazione non può essere prenotata da due o più utenti diversi nello stesso giorno.";
 		} else {
-			frase = "Lingua non supportata";
+		   return frase = "Lingua non supportata";
 		}
-		return frase;
+
 	}
 	
-//	@GetMapping(value="/prenotazioni", produces= MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity <Prenotazione> prenotazioni () {
-//		
-//		List <Prenotazione> lista = service.findAllPrenotazione();
-//		lista.
-//		
-//		ResponseEntity <Penotazione> resp = new ResponseEntity <Prenotazione>(lista.size(), HttpStatus.OK); 
-//		return resp;
-//	}
+	@GetMapping(value="/utenti", produces= MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity <?> utenti () {
+		
+		List <Utente> lista = service.findAllUtente();
+		
+		
+		return new ResponseEntity <> (lista, HttpStatus.CREATED); 
+	}
 
 }
