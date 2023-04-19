@@ -2,6 +2,8 @@ package it.vincenzopicone.gestioneprenotazioni.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -34,6 +36,7 @@ public class Postazione {
 	@Column(nullable = false)
 	private int nummaxpartecipanti;
 	@ManyToOne
+	@JsonIgnoreProperties("edificio")
 	@JoinColumn(name="id_edificio")
 	private Edificio edificio;
 	

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 
-@Repository
+
 public interface UtenteDAORepo extends CrudRepository<Utente, Long> {
+	public Utente findByEmail (String email);
+	public boolean existsByEmail (String email);
 
 }

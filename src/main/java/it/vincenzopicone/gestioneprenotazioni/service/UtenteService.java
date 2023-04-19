@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 import it.vincenzopicone.gestioneprenotazioni.repository.UtenteDAORepo;
+import jakarta.persistence.EntityExistsException;
 
 
 @Service
@@ -20,30 +21,46 @@ public class UtenteService {
 	@Autowired @Qualifier("CustomUtente") private ObjectProvider<Utente> customUtenteProvider;
 	@Autowired @Qualifier("ParamsUtente") private ObjectProvider<Utente> paramsUtenteProvider;
 
-	public void creaFakeUtente() {
+	public Utente creaFakeUtente() {
 		Utente U = fakeUtenteProvider.getObject();
 		inserisciUtente(U);
+		return U;
 	}
-	public void creaCustomUtente() {
+	public Utente creaCustomUtente() {
 		Utente U = customUtenteProvider.getObject();
 		inserisciUtente(U);
+		return U;
 	}
 
-	public void creaParamsUtente(String user, String nomin, String email) {
-		Utente U = paramsUtenteProvider.getObject(user, nomin, email);
+	public Utente creaParamsUtente(Utente u) {
+		Utente U = paramsUtenteProvider.getObject();
 		inserisciUtente(U);
+		return U;
 	}
 	
-	public void inserisciUtente(Utente u) {
+	public Utente inserisciUtente(Utente u) {
+		if(repo.existsByEmail(u.getEmail())) {
+			throw new EntityExistsException("L'email esiste");
+		} else {
 		repo.save(u);
+		}
+		return u;
 	}
-	public void rimuoviUtente(Utente u) {
-		repo.delete(u);
+	public String rimuoviUtente(Long id) {
+		if(!repo.existsById(id)){
+			throw new EntityExistsException("L'utente non esiste");
+		} 
+		repo.deleteById(id);
+		return "User deleted";
 
 	}
 	
-	public void aggiornaUtente(Utente u) {
+	public String aggiornaUtente(Utente u) {
+		if(!repo.existsById(u.getId())){
+			throw new EntityExistsException("L'utente non esiste");
+		} 
 		repo.save(u);
+		return "Utente aggiornato";
 		
 	}
 	public Utente findUtenteById(Long id) {

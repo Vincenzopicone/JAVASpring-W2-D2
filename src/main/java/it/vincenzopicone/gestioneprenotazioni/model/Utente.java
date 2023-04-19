@@ -2,6 +2,9 @@ package it.vincenzopicone.gestioneprenotazioni.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,6 +33,7 @@ public class Utente {
 	private String nominativo;
 	@Column(nullable = false, unique= true)
 	private String email;
+	@JsonIgnoreProperties("prenotazione")
 	@OneToMany (mappedBy="utente", cascade= CascadeType.ALL)
 	private List<Prenotazione> prenotazione;
 	

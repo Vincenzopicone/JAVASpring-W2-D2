@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Prenotazione;
@@ -19,9 +20,10 @@ import it.vincenzopicone.gestioneprenotazioni.service.UtenteService;
 
 
 @Controller
+@RequestMapping("/prenotazioni")
 public class PrenotazioneController {
 	
-	@Autowired UtenteService service;
+	@Autowired PrenotazioneService service;
 	
 	@GetMapping("/regole")
 	public @ResponseBody String showRules () {
@@ -42,10 +44,9 @@ public class PrenotazioneController {
 
 	}
 	
-	@GetMapping(value="/utenti", produces= MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity <?> utenti () {
-		List <Utente> lista = service.findAllUtente();
-		return new ResponseEntity <> (lista, HttpStatus.CREATED); 
+	@GetMapping
+	public ResponseEntity<List<Prenotazione>> getAll () {
+		return new ResponseEntity<List<Prenotazione>>(service.findAllPrenotazione(), HttpStatus.OK);
 	}
 
 }

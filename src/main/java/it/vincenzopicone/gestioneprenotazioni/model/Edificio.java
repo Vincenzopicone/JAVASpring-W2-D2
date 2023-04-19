@@ -2,6 +2,8 @@ package it.vincenzopicone.gestioneprenotazioni.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +31,7 @@ public class Edificio {
 	private String indirizzo;
 	@Column(nullable = false)
 	private String citta;
-	
+	@JsonIgnoreProperties("postazione")
 	@OneToMany(mappedBy="edificio")
 	private List<Postazione> postazione;
 

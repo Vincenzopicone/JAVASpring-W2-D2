@@ -3,6 +3,9 @@ package it.vincenzopicone.gestioneprenotazioni.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,8 +31,10 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
+	@JsonIgnore
 	private Utente utente;
 	@ManyToOne
+	@JsonIgnore
 	private Postazione postazione;
 	@Column(nullable=false)
 	private LocalDate dataprenotazione;
