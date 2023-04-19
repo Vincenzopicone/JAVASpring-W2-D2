@@ -11,6 +11,7 @@ import it.vincenzopicone.gestioneprenotazioni.model.Edificio;
 import it.vincenzopicone.gestioneprenotazioni.model.Postazione;
 import it.vincenzopicone.gestioneprenotazioni.model.TipoPostazione;
 import it.vincenzopicone.gestioneprenotazioni.repository.PostazioneDAORepo;
+import jakarta.persistence.EntityExistsException;
 @Service
 public class PostazioneService {
 
@@ -33,8 +34,12 @@ public class PostazioneService {
 	public void inserisciPostazione(Postazione p) {
 		repo.save(p);
 	}
-	public void rimuoviPostazione(Postazione p) {
-		repo.delete(p);
+	public String rimuoviPostazione(Long id) {
+		if(!repo.existsById(id)){
+			throw new EntityExistsException("La prenotazione non esiste");
+		} 
+		repo.deleteById(id);
+		return "Prenotazione cancellata";
 
 	}
 	

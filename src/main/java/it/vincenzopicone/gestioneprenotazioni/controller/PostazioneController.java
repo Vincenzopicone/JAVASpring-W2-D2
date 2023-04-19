@@ -13,43 +13,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.vincenzopicone.gestioneprenotazioni.model.Postazione;
 import it.vincenzopicone.gestioneprenotazioni.model.Utente;
+import it.vincenzopicone.gestioneprenotazioni.service.PostazioneService;
 import it.vincenzopicone.gestioneprenotazioni.service.UtenteService;
+import jakarta.persistence.EntityExistsException;
 
 
 @RestController
-@RequestMapping("/utenti")
-public class UtenteController {
+@RequestMapping("/postazioni")
+public class PostazioneController {
 	
-	@Autowired UtenteService utenteService;
+	@Autowired PostazioneService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Utente>> getAll () {
-		return new ResponseEntity<List<Utente>>(utenteService.findAllUtente(), HttpStatus.OK);
+	public ResponseEntity<List<Postazione>> getAll () {
+		return new ResponseEntity<List<Postazione>>(service.findAllPostazione(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getUtente(@PathVariable Long id) {
-		return new ResponseEntity<Utente>(utenteService.findUtenteById(id), HttpStatus.CREATED);
+		return new ResponseEntity<Postazione>(service.findPostazioneById(id), HttpStatus.CREATED);
 	}
 	
 	
-	@PostMapping
-	public ResponseEntity<?> createUtente(@RequestBody Utente utente){
-		return new ResponseEntity<>(utenteService.inserisciUtente(utente), HttpStatus.CREATED);
-	
-	}
+//	@PostMapping
+//	public ResponseEntity<?> createUtente(@RequestBody Postazione pos){
+//		return new ResponseEntity<>(service.creaPostazione(pos), HttpStatus.CREATED);
+//	
+//	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteUtente(@PathVariable Long id) {
-		return new ResponseEntity<String>(utenteService.rimuoviUtente(id), HttpStatus.OK);
+		return new ResponseEntity<String>(service.rimuoviPostazione(id), HttpStatus.OK);
 
 	}
 	
-	@PutMapping
-	public ResponseEntity<?> updateUtente(@RequestBody Utente utente){
-		return new ResponseEntity<>(utenteService.aggiornaUtente(utente), HttpStatus.CREATED);
-		
-	}
+//	@PutMapping
+//	public ResponseEntity<?> updateUtente(@RequestBody Postazione pos){
+//		return new ResponseEntity<>(service.aggiornaPostazione(pos), HttpStatus.CREATED);
+//		
+//	}
 	
 }
-	

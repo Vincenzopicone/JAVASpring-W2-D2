@@ -13,6 +13,7 @@ import it.vincenzopicone.gestioneprenotazioni.model.Prenotazione;
 import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 import it.vincenzopicone.gestioneprenotazioni.repository.PrenotazioneDAORepo;
 import it.vincenzopicone.gestioneprenotazioni.runner.GestionePrenotazioniRun;
+import jakarta.persistence.EntityExistsException;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -39,8 +40,12 @@ public class PrenotazioneService {
 		repo.save(p);
 		}
 	}
-	public void rimuoviPrenotazione(Prenotazione p) {
-		repo.delete(p);
+	public String rimuoviPrenotazione(Long id) {
+		if(!repo.existsById(id)){
+			throw new EntityExistsException("La prenotazione non esiste");
+		} 
+		repo.deleteById(id);
+		return "Prenotazione cancellata";
 
 	}
 	
