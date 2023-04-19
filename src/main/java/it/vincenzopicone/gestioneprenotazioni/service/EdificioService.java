@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Edificio;
 import it.vincenzopicone.gestioneprenotazioni.repository.EdificioDAORepo;
+import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.EntityNotFoundException;
 
 
 @Service
@@ -29,19 +31,28 @@ public class EdificioService {
 		Edificio E = nuovoEdificioProvider.getObject();
 		inserisciEdificio(E);
 	}
-
-	
 	public void inserisciEdificio(Edificio e) {
 		repo.save(e);
 	}
-	public void rimuoviEdificio(Edificio e) {
-		repo.delete(e);
-
+	public Edificio getEdificio(Long id) {
+		if(!repo.existsById(id)){
+			throw new EntityNotFoundException("L'edificio non esiste");
+		} 
+		return repo.findById(id).get();
 	}
-	
-	public void aggiornaEdificio(Edificio e) {
+	public String rimuoviEdificio(Long id) {
+		if(!repo.existsById(id)){
+			throw new EntityExistsException("L'edificio non esiste");
+		} 
+		repo.deleteById(id);
+		return "Edificio cancellato";
+	}
+	public String aggiornaEdificio(Edificio e) {
+		if(!repo.existsById(e.getId())){
+			throw new EntityExistsException("L'edificio non esiste");
+		} 
 		repo.save(e);
-		
+		return "Edificio aggiornato";	
 	}
 	public Edificio findEdificioById(Long id) {
 		return repo.findById(id).get();

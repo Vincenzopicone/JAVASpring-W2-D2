@@ -51,12 +51,12 @@ public class GestionePrenotazioniRun implements CommandLineRunner {
 		Edificio E3 = Ed_Serv.findEdificioById(3l);
 		Edificio E4 = Ed_Serv.findEdificioById(4l);
 		Edificio E5 = Ed_Serv.findEdificioById(5l);
-//		Pos_Serv.paramsPostazione("Riunione 12", TipoPostazione.OPENSPACE, 49, E1);
-//		Pos_Serv.paramsPostazione("Riunione 1", TipoPostazione.PRIVATO, 12, E2);
-//		Pos_Serv.paramsPostazione("Riunione 17", TipoPostazione.SALA_RIUNIONI, 52, E3);
-//		Pos_Serv.paramsPostazione("Riunione 65", TipoPostazione.SALA_RIUNIONI, 56, E4);
-//		Pos_Serv.paramsPostazione("Riunione 87", TipoPostazione.OPENSPACE, 24, E5);
-//		Pos_Serv.paramsPostazione("Riunione 19", TipoPostazione.PRIVATO, 5, E1);
+		Pos_Serv.paramsPostazione("Riunione 12", TipoPostazione.OPENSPACE, 49, E1);
+		Pos_Serv.paramsPostazione("Riunione 1", TipoPostazione.PRIVATO, 12, E2);
+		Pos_Serv.paramsPostazione("Riunione 17", TipoPostazione.SALA_RIUNIONI, 52, E3);
+		Pos_Serv.paramsPostazione("Riunione 65", TipoPostazione.SALA_RIUNIONI, 56, E4);
+		Pos_Serv.paramsPostazione("Riunione 87", TipoPostazione.OPENSPACE, 24, E5);
+		Pos_Serv.paramsPostazione("Riunione 19", TipoPostazione.PRIVATO, 5, E1);
 		
 		
 		//cerco le postazioni esistenti
@@ -89,16 +89,13 @@ public class GestionePrenotazioniRun implements CommandLineRunner {
 
 		/// prova del controllo su le prenotazioni OK
 		/// stesso utente non può prenotare lo stesso giorno
-		Pren_Serv.creaPrenotazione(U3, P1, LocalDate.of(2023, 9, 3));
+		//Pren_Serv.creaPrenotazione(U3, P1, LocalDate.of(2023, 9, 3));
 		
 		/// non si può prenotare lo stesso giorno un postazione
 		
 		//Pren_Serv.creaPrenotazione(U5, P6, LocalDate.of(2023, 3, 3));
 		
-		
-		List <Prenotazione> lista = Pren_Serv.findAllPrenotazione();
-		System.out.println(lista.size());
-		
+	
 		
 		
 		
