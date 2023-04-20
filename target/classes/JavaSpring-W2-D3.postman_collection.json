@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "d725eb7d-97d7-44be-8410-634891d4168a",
+		"name": "JavaSpring-W2-D3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25926925"
+	},
+	"item": [
+		{
+			"name": "Get Utenti",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/utenti",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"utenti"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Utenti con id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/utenti/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"utenti",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Utente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 3,\n        \"username\": \"Pietro Ferrari3\",\n        \"nominativo\": \"Pietro Ferrari\",\n        \"email\": \"Pietro4 Ferrari4@example.com\",\n        \"prenotazione\": []\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/utenti",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"utenti"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Utenti",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/utenti/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"utenti",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Utenti",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": 3,\n        \"username\": \"Pietro4444 Ferrari3\",\n        \"nominativo\": \"Pietro Ferrari\",\n        \"email\": \"Pietro4 Ferrari4@example.com\",\n        \"prenotazione\": []\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/utenti",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"utenti"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

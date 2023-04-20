@@ -36,11 +36,11 @@ public class EdificioController {
 	}
 	
 	
-//	@PostMapping
-//	public ResponseEntity<?> createUtente(@RequestBody Edificio edificio){
-//		return new ResponseEntity<>(service.creaNuovoEdificio(edificio), HttpStatus.CREATED);
-//	
-//	}
+	@PostMapping
+	public ResponseEntity<?> createUtente(@RequestBody Edificio edificio){
+		return new ResponseEntity<>(service.inserisciEdificio(edificio), HttpStatus.CREATED);
+	
+	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteEdificio(@PathVariable Long id) {
 		return new ResponseEntity<String>(service.rimuoviEdificio(id), HttpStatus.OK);

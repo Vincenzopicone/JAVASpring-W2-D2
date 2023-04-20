@@ -64,7 +64,7 @@ public class GestionePrenotazioniRun implements CommandLineRunner {
 //      	Postazione P3 = Pos_Serv.findPostazioneById(3l);
 //		Postazione P4 = Pos_Serv.findPostazioneById(4l);
 //		Postazione P5 = Pos_Serv.findPostazioneById(5l);
-//		Postazione P6 = Pos_Serv.findPostazioneById(6l);
+		Postazione P6 = Pos_Serv.findPostazioneById(6l);
 		
 		// cerco gli utenti esistenti
 		
@@ -72,7 +72,7 @@ public class GestionePrenotazioniRun implements CommandLineRunner {
 //		Utente U2 = Ut_Serv.findUtenteById(2l);
 //		Utente U3 = Ut_Serv.findUtenteById(9l);
 //		Utente U4 = Ut_Serv.findUtenteById(4l);
-//		Utente U5 = Ut_Serv.findUtenteById(5l);
+		Utente U5 = Ut_Serv.findUtenteById(5l);
 //		Utente U6 = Ut_Serv.findUtenteById(6l);
 //		Utente U7 = Ut_Serv.findUtenteById(7l);
 //		Utente U8 = Ut_Serv.findUtenteById(8l);
@@ -92,7 +92,7 @@ public class GestionePrenotazioniRun implements CommandLineRunner {
 		
 		/// non si può prenotare lo stesso giorno un postazione
 		
-		//Pren_Serv.creaPrenotazione(U5, P6, LocalDate.of(2023, 3, 3));
+		Pren_Serv.creaPrenotazione(U5, P6, LocalDate.of(2023, 3, 3));
 	
 	}
 

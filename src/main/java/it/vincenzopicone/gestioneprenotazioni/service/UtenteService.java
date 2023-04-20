@@ -5,10 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import it.vincenzopicone.gestioneprenotazioni.model.Utente;
 import it.vincenzopicone.gestioneprenotazioni.repository.UtenteDAORepo;
+import it.vincenzopicone.gestioneprenotazioni.repository.UtentePageableRepository;
 import jakarta.persistence.EntityExistsException;
 
 
@@ -16,6 +19,7 @@ import jakarta.persistence.EntityExistsException;
 public class UtenteService {
 	
 	@Autowired UtenteDAORepo repo;
+	@Autowired UtentePageableRepository repoUte;
 	
 	@Autowired @Qualifier("FakeUtente") private ObjectProvider<Utente> fakeUtenteProvider;
 	@Autowired @Qualifier("CustomUtente") private ObjectProvider<Utente> customUtenteProvider;
@@ -30,6 +34,9 @@ public class UtenteService {
 		Utente U = customUtenteProvider.getObject();
 		inserisciUtente(U);
 		return U;
+	}
+	public Page<Utente> getAllUtentiPageable (Pageable pag) {
+		return (Page<Utente>) repoUte.findAll(pag);	
 	}
 
 	public Utente creaParamsUtente(Utente u) {

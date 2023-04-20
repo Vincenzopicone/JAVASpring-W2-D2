@@ -31,8 +31,9 @@ public class EdificioService {
 		Edificio E = nuovoEdificioProvider.getObject();
 		inserisciEdificio(E);
 	}
-	public void inserisciEdificio(Edificio e) {
+	public Edificio inserisciEdificio(Edificio e) {
 		repo.save(e);
+		return e;
 	}
 	public Edificio getEdificio(Long id) {
 		if(!repo.existsById(id)){
